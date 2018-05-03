@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ShellComponent } from './shell.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { InitGuard } from './init.guard';
+import { clog } from '../clog';
 
 const routes: Routes = [
   {
@@ -27,4 +28,6 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ShellRoutingModule { }
+export class ShellRoutingModule {
+  constructor() { clog(ShellRoutingModule.name); }
+}

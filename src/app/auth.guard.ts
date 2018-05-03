@@ -3,15 +3,16 @@ import { CanLoad } from '@angular/router';
 
 import { of } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
+import { clog } from './clog';
 
 @Injectable()
 export class AuthGuard implements CanLoad {
   canLoad() {
-    console.log(`FAKE Auth... I am just waiting 1s`);
+    clog(`FAKE Auth... I am just waiting 2s`, 70);
 
     return of(true).pipe(
-      delay(1000),
-      tap(() => console.log(`Auth [OK]... continue loading the ShellModule`))
+      delay(2000),
+      tap(() => clog(`Auth [OK]... continue loading the ShellModule`, 70))
     );
   }
 }

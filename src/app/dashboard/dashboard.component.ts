@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { clog } from '../clog';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,4 +7,5 @@ import { Component } from '@angular/core';
     <a href="/">restart</a>`
 })
 export class DashboardComponent {
+  constructor() { clog(DashboardComponent.name); }
 }

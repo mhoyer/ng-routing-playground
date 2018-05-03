@@ -3,15 +3,20 @@ import { CanActivate } from '@angular/router';
 
 import { of } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
+import { clog } from '../clog';
 
 @Injectable()
 export class InitGuard implements CanActivate {
+  constructor() {
+    clog(InitGuard.name);
+  }
+
   canActivate() {
-    console.log(`FAKE Init... I am just waiting 1s`);
+    clog(`FAKE Init... I am just waiting 2s`, 30);
 
     return of(true).pipe(
-      delay(1000),
-      tap(() => console.log(`Init [OK]... continue loading the ShellComponent`))
+      delay(2000),
+      tap(() => clog(`Init [OK]... continue loading the ShellComponent`, 30))
     );
   }
 }

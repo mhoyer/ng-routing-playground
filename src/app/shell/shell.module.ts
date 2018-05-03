@@ -5,14 +5,17 @@ import { ShellRoutingModule } from './shell-routing.module';
 import { ShellComponent } from './shell.component';
 import { DashboardModule } from '../dashboard/dashboard.module';
 import { InitGuard } from './init.guard';
+import { clog } from '../clog';
 
 @NgModule({
   imports: [
     CommonModule,
+    DashboardModule,
     ShellRoutingModule,
-    DashboardModule
   ],
   providers: [InitGuard],
   declarations: [ShellComponent]
 })
-export class ShellModule { }
+export class ShellModule {
+  constructor() { clog(ShellModule.name); }
+}

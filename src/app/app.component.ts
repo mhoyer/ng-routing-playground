@@ -1,5 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
+import { clog } from './clog';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,9 @@ import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angul
 export class AppComponent implements AfterViewInit {
   loading = true;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    clog(AppComponent.name, 10);
+  }
 
   ngAfterViewInit() {
     this.router.events.subscribe((event) => {
